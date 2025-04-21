@@ -8,8 +8,8 @@ mongoose
     console.log("Connected to MongoDB!");
 
     // start the server
-    app.listen(3001, () => {
-      console.log("Server started on http://localhost:3001");
+    app.listen(4001, () => {
+      console.log("Server started on http://localhost:4001");
     });
   })
   .catch((err) => {

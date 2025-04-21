@@ -1,7 +1,7 @@
 const Post = require("../models/post");
 
 const postController = {
-  createRecipe: async (req, res) => {
+  createPost: async (req, res) => {
     try {
       // get the data from the request body
       const { title, content } = req.body;
@@ -16,12 +16,12 @@ const postController = {
       await newPost.save();
 
       // send a response
-      res.status(201).json({ message: "Recipe created successfully" });
+      res.status(201).json({ message: "Post created successfully" });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   },
-  getRecipes: async (req, res) => {
+  getPosts: async (req, res) => {
     try {
       // get all the recipes from the database
       const posts = await Post.find().select("-__v");
@@ -32,7 +32,7 @@ const postController = {
       res.status(500).json({ message: error.message });
     }
   },
-  getRecipe: async (req, res) => {
+  getPost: async (req, res) => {
     try {
       // get the post id from the request parameters
       const { id } = req.params;
@@ -46,7 +46,7 @@ const postController = {
       res.status(500).json({ message: error.message });
     }
   },
-  updateRecipe: async (req, res) => {
+  updatePost: async (req, res) => {
     try {
       // get the post id from the request parameters
       const { id } = req.params;
@@ -58,12 +58,12 @@ const postController = {
       await Post.findByIdAndUpdate(id, { title, content });
 
       // send a response
-      res.status(200).json({ message: "Recipe updated successfully" });
+      res.status(200).json({ message: "Post updated successfully" });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   },
-  deleteRecipe: async (req, res) => {
+  deletePost: async (req, res) => {
     try {
       // get the post id from the request parameters
       const { id } = req.params;
@@ -72,7 +72,7 @@ const postController = {
       await Post.findByIdAndDelete(id);
 
       // send a response
-      res.status(200).json({ message: "Recipe deleted successfully" });
+      res.status(200).json({ message: "Post deleted successfully" });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
