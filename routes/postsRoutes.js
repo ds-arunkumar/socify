@@ -7,11 +7,12 @@ const {
   updatePost,
   deletePost,
 } = require("../controllers/postController");
+const auth = require("../middlewares/auth");
 
 // create new router
 const postsRouter = express.Router();
 
-postsRouter.post("/", createPost);
+postsRouter.post("/", auth.isAuthenticated, createPost);
 postsRouter.get("/", getPosts);
 postsRouter.get("/:id", getPost);
 postsRouter.put("/:id", updatePost);
